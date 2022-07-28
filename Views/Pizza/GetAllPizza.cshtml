@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DominosPizzaMvc.Models.Pizza>
+
+@{
+    ViewData["Title"] = "GetAllPizza";
+}
+
+<h1>GetAllPizzaAsync</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PizzaType)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PizzaType)
+            </td>
+            <td>
+                @Html.ActionLink("EditPizza", "EditPizza", new {   PizzaId=item.PizzaId  }) |
+                @Html.ActionLink("Details", "Details", new { PizzaId=item.PizzaId  }) |
+                @Html.ActionLink("DeletePizza", "DeletePizza", new {  PizzaId=item.PizzaId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
